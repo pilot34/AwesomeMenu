@@ -322,6 +322,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         [_timer invalidate];
         [_timer release];
         _timer = nil;
+        [self performSelector:@selector(_didClose) withObject:nil afterDelay:0.5];
         return;
     }
     
@@ -353,6 +354,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
     _flag --;
+}
+
+- (void)_didClose
+{
+    if ([_delegate respondsToSelector:@selector(AwesomeMenuDidClose:)])
+        [_delegate  AwesomeMenuDidClose:self];
 }
 
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p

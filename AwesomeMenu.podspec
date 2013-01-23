@@ -8,5 +8,4 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/pilot34/AwesomeMenu.git" }
   s.platform     = :ios
   s.source_files = 'AwesomeMenu/AwesomeMenu/*.{h,m}'
-  s.resources    = "AwesomeMenu/Images/*.png"
 end
